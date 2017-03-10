@@ -20,6 +20,8 @@ object StreamDemo { //scala 2.9以后的版本废弃了Application而是启用�
       println("master is "+args(0))
       conf.setMaster(args(0))
     }
+    else
+      conf.setMaster("local[4]")
     // 从SparkConf创建StreamingContext并指定1秒钟的批处理大小  
     val ssc = new StreamingContext(conf, Seconds(5))
     // 连接到本地机器9999端口上后，使用收到的数据创建DStream 
