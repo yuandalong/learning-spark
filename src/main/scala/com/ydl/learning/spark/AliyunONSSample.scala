@@ -25,9 +25,11 @@ import org.apache.spark.storage.StorageLevel
 import org.apache.spark.streaming.aliyun.ons.OnsUtils
 import org.apache.spark.streaming.{Milliseconds, StreamingContext}
 import org.apache.spark.{SparkConf, SparkContext}
+import org.slf4j.LoggerFactory
 
 object AliyunONSSample {
   def main(args: Array[String]): Unit = {
+    val log = LoggerFactory.getLogger(AliyunONSSample.getClass)
     val config = new Array[String](6)
     config(0) = "eLiJCyOQT5BiUAYn"
     config(1) = "HJth7lyCgX3jC2FScH6aM90V0FwXmT"
@@ -69,7 +71,7 @@ object AliyunONSSample {
     def func: Message => Array[Byte] = msg => {
       println(msg.getMsgID)
       println(msg.toString)
-      msg.getBody
+      (new String(msg.getBody) + "|" + msg.getTag).getBytes
     }
     val onsStreams = (0 until numStreams).map { i =>
       println(s"starting stream $i")
@@ -84,7 +86,13 @@ object AliyunONSSample {
         func)
     }
     val unionStreams = ssc.union(onsStreams)
-    unionStreams.foreachRDD(rdd => {rdd.map(bytes => new String(bytes)).collect().foreach(println)})
+    unionStreams.foreachRDD(rdd => {
+      rdd.map(bytes => new String(bytes)).collect().foreach {
+        msg =>
+          println(msg)
+          log.info(msg)
+      }
+    })
     ssc.start()
     ssc.awaitTermination()
   }

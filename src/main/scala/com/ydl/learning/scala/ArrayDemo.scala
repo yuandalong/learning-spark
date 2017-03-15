@@ -1,15 +1,15 @@
 package com.ydl.learning.scala
 
-
+/**
+  * scala 数组使用
+  */
 object ArrayDemo {
   def main(args: Array[String]): Unit = {
     val array = new Array[String](3)
     array(0) = "hello"
     array(1) = ", "
     array(2) = "world"
-    array.foreach {
-      print
-    }
+    array.foreach(print)
     println()
     //for循环
     for (i <- array) print(i)
