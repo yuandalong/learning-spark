@@ -9,4 +9,7 @@ object StringDemo extends App{
   //字符串格式化
   println("%s is %d".format(name,age))
   println(s"$name is $age")
+  println(name.equals("ydl"))
+  if(name.equals("ydl"))
+    println("adfadf")
 }
