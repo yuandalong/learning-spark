@@ -18,7 +18,11 @@ object ListDemo extends App{
   val empty = List()
 
   //使用::方法构造列表
-  //Nil表示空List
+  //Nil表示空List，顺序从左到右，ap是list里第一个元素
   val fruit2 = "ap" :: ("org" :: ("pes" :: Nil))
+  //追加元素
+  var fruit3 = List[String]()
+  fruit3 = fruit3 :+ "a"
+
 
 }
