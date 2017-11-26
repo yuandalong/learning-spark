@@ -69,4 +69,6 @@ object MapDemo extends App {
 
   println(show(xMap.get("spark")))
   println(show(xMap.get("sparkSQL")))
+  //map取值
+  println(xMap.get("spark").get)
 }

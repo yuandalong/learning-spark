@@ -25,7 +25,7 @@ object StreamDemo { //scala 2.9以后的版本废弃了Application而是启用�
     // 从SparkConf创建StreamingContext并指定1秒钟的批处理大小  
     val ssc = new StreamingContext(conf, Seconds(5))
     // 连接到本地机器9999端口上后，使用收到的数据创建DStream 
-    val lines = ssc.socketTextStream("127.0.0.1", 9999)
+    val lines = ssc.socketTextStream("127.0.0.1", 20102)
     lines.print()
     println(lines.toString())
     val words = lines.flatMap(_.split(" "))
