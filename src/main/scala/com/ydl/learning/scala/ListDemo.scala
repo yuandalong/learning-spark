@@ -10,6 +10,8 @@ import scala.util.control.Breaks._
 object ListDemo extends App {
     //定义list 调用apply方法
     val fruit = List("apples", "oranges", "pears")
+    //剔除第一个元素，返回新列表
+    fruit.tail
     val nums = List(1, 2, 3, 4)
     val diag3 =
         List(
