@@ -58,6 +58,12 @@
             <artifactId>breeze_${scala.binary.version}</artifactId>
             <version>0.11.2</version>
         </dependency>
+        <!--hbase相关包-->
+        <dependency>
+            <groupId>it.nerdammer.bigdata</groupId>
+            <artifactId>spark-hbase-connector</artifactId>
+            <version>1.0.0_SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
