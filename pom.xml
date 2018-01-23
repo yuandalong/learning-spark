@@ -64,6 +64,12 @@
             <artifactId>spark-hbase-connector</artifactId>
             <version>1.0.0_SNAPSHOT</version>
         </dependency>
+        <!--mybatis scala包-->
+        <dependency>
+            <groupId>org.mybatis.scala</groupId>
+            <artifactId>mybatis-scala-core_2.11</artifactId>
+            <version>1.0.3</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
