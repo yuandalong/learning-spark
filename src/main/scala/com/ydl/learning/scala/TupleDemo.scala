@@ -45,4 +45,8 @@ object TupleDemo extends App {
     //在创建两个元素的元组时，可以使用特殊语法：->
     val a = 1 -> 2
     println(a._1)
+
+    val t1=("1","2")
+    val t2=("1","2")
+    println(t1==t2)
 }
