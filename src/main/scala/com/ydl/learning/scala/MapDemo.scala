@@ -78,5 +78,5 @@ object MapDemo extends App {
         println("is not defined")
     }
     //建议使用getOrElse方法设置默认值来替换isDefinde和get方法的组合
-    println(xMap.get("spark2").getOrElse("is not defined"))
+    println(xMap.get("spark").getOrElse("is not defined"))
 }

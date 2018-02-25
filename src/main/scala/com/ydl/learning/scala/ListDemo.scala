@@ -30,6 +30,8 @@ object ListDemo extends App {
     //根据索引获取元素
     println(fruit3(0))
 
+    //合并两个list
+    val fruit4 = fruit3 ++ fruit2
     //替换元素，参数1表示要替换的元素索引，参数2是要替换的元素，用Seq定义，参数3表示要替换几个元素
     fruit3.patch(0, Seq("b"), 1)
     //用123替换两个元素
@@ -51,4 +53,6 @@ object ListDemo extends App {
             }
         }
     )
+    val intToTuples = List((1,2),(1,3),(2,3),(3,3),(3,4)).groupBy(_._1)
+    println(intToTuples)
 }
