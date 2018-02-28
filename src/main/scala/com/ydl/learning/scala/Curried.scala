@@ -5,7 +5,7 @@ package com.ydl.learning.scala
   *
   * Created by ydl on 2017/11/25.
   */
-object 柯力化函数 extends App {
+object Curried extends App {
     //有时会有这样的需求：允许别人一会在你的函数上应用一些参数，然后又应用另外的一些参数。
 
     //例如一个乘法函数，在一个场景需要选择乘数，而另一个场景需要选择被乘数。
