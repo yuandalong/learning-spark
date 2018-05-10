@@ -33,6 +33,7 @@ object FunctionalProgramming {
     }
 
     getName(f, "Scala")
+
     /**
       *
       * 把数组中每个数乘以2再打印出来
@@ -60,29 +61,48 @@ object FunctionalProgramming {
 
     /**
       * 定义一个函数作为形参的方法
+      *
       * @param b
       */
-    def a(b:()=>Unit){
-      b()//执行形参函数
+    def a(b: () => Unit) {
+      b() //执行形参函数
     }
 
     /**
       * 定义一个函数
+      *
       * @return
       */
-    def c = ()=>println("1234")
-    a(c)//调用形参是函数的方法，参数也是一个函数
-    a(()=>println("5678"))//调用形参是函数的方法，参数是一个匿名函数
+    def c = () => println("1234")
+
+    a(c) //调用形参是函数的方法，参数也是一个函数
+    a(() => println("5678")) //调用形参是函数的方法，参数是一个匿名函数
 
     /**
       * 函数形参带参数
+      *
       * @param a
       */
-    def test(a :(String,String) => Unit): Unit ={
-      a("1","2")
+    def test(a: (String, String) => Unit): Unit = {
+      a("1", "2")
     }
 
-    test((a:String,b:String) => println(a+b))
+    test((a: String, b: String) => println(a + b))
+
+    /**
+      * 高阶函数带返回值
+      *
+      * @param a
+      * @return
+      */
+    def test2(a: (String, String) => String): String = {
+      return a("1", "2")
+    }
+
+    test2((a: String, b: String) => a + b)
+
+    val b = (a: String, b: String) => a + b
+    test2(b)
   }
 
   def hiBigData(name: String) {

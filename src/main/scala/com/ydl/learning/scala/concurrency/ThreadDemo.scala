@@ -10,12 +10,12 @@ package com.ydl.learning.scala.concurrency
   * Created by ydl on 2018/2/26.
   */
 object ThreadDemo {
-    def main(args: Array[String]): Unit = {
-        val hello = new Thread(new Runnable {
-            override def run(): Unit = {
-                println("hello world")
-            }
-        })
-        hello.start()
-    }
+  def main(args: Array[String]): Unit = {
+    val hello = new Thread(new Runnable {
+      override def run(): Unit = {
+        println("hello world")
+      }
+    })
+    hello.start()
+  }
 }

@@ -59,7 +59,7 @@ class OopDemo {
   p = new Person //使用默认参数
   p = new Person("ydl")
   //p = new Person(20) 编译不通过，
-  p = new Person(age=20)
+  p = new Person(age = 20)
 }
 
 

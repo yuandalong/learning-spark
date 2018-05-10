@@ -24,7 +24,7 @@ object ArrayDemo {
       for (i <- array if (i > 3)) yield i
     }
 
-    val intArray = Array(1,2,3,4,5)
-    forYield(intArray).foreach(print)//过滤后的结果
+    val intArray = Array(1, 2, 3, 4, 5)
+    forYield(intArray).foreach(print) //过滤后的结果
   }
 }

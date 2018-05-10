@@ -1,11 +1,13 @@
 package com.ydl.learning.spark
 
 import scala.io.Source
+
 /**
- * 读取文件
- */
+  * 读取文件
+  */
 object ReadFile {
   def widthOfLength(s: String) = s.length.toString.length
+
   def main(args: Array[String]): Unit = {
 
     if (args.length > 0) {
