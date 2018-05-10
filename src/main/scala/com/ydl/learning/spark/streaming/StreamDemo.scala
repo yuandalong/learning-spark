@@ -8,16 +8,16 @@ import java.io.File
 import org.apache.spark.examples.streaming.StreamingExamples
 
 /**
- * spark stream demo
- * nc -lk 9999 开启本机9999端口之后发送消息
- */
+  * spark stream demo
+  * nc -lk 9999 开启本机9999端口之后发送消息
+  */
 object StreamDemo { //scala 2.9以后的版本废弃了Application而是启用了App类
   def main(args: Array[String]) {
     StreamingExamples.setStreamingLogLevels()
     //注意setMaster，用spark-submit提交jar包时不要用local，否则会遇到各种各样的问题，例如print不打印
     val conf = new SparkConf().setAppName("stream")
-    if(args.length > 0){
-      println("master is "+args(0))
+    if (args.length > 0) {
+      println("master is " + args(0))
       conf.setMaster(args(0))
     }
     else

@@ -12,7 +12,7 @@ object SaveAsTextFileDemo extends BaseSc with App {
   //  data: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[3] at parallelize at <console>:21
 
   //保存为test_data_save文件
-  data.saveAsTextFile("test_data_save")//保存到项目根目录test_data_save目录下，会根据分区个数拆分文件
+  data.saveAsTextFile("test_data_save") //保存到项目根目录test_data_save目录下，会根据分区个数拆分文件
   //引入必要的class
   import org.apache.hadoop.io.compress.GzipCodec
   //保存为压缩文件

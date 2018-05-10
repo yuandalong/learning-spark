@@ -8,7 +8,8 @@ package com.ydl.learning.spark.transformationsDemo
   * 第三个参数seed 表示随机的种子
   * Created by ydl on 2017/3/27.
   */
-object SampleDemo extends BaseSc with App {//多个父类
+object SampleDemo extends BaseSc with App {
+  //多个父类
   //创建数据
   val data = sc.parallelize(1 to 1000, 1)
 

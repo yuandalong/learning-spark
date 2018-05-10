@@ -11,6 +11,7 @@ object BaseSc {
     new SparkContext(conf)
   }
 }
-class BaseSc{
+
+class BaseSc {
   val sc = BaseSc.createSc("app")
 }

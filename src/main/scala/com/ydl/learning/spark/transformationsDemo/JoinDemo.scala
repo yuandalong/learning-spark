@@ -8,13 +8,13 @@ package com.ydl.learning.spark.transformationsDemo
   */
 object JoinDemo extends BaseSc with App {
   //创建第一个数据集
-  var data1 = sc.parallelize(List(("A",1),("B",2),("C",3)))
+  var data1 = sc.parallelize(List(("A", 1), ("B", 2), ("C", 3)))
 
   //创建第二个数据集
-  var data2 = sc.parallelize(List(("A",4)))
+  var data2 = sc.parallelize(List(("A", 4)))
 
   //创建第三个数据集
-  var data3 = sc.parallelize(List(("A",4),("A",5)))
+  var data3 = sc.parallelize(List(("A", 4), ("A", 5)))
 
   data1.join(data2).collect
   //输出为 Array[(String, (Int, Int))] = Array((A,(1,4)))
