@@ -55,4 +55,31 @@ object ListDemo extends App {
   )
   val intToTuples = List((1, 2), (1, 3), (2, 3), (3, 3), (3, 4)).groupBy(_._1)
   println(intToTuples)
+
+  //fold和reduce，reduce是一种特殊的fold，fold需要初始值，reduce不需要
+  val numbers = List((5, 1), (4, 2), (8, 3), (6, 4), (2, 5))
+  val result = numbers.fold(0, 0) { (z, i) =>
+    (z._1 + i._1, z._2 + i._2)
+  }
+  println(result)
+  val result2 = numbers.reduce((a, b) => {
+    (a._1 + b._1, a._2 + b._2)
+  })
+  println(result2)
+  //排序
+  //sorted 元素按字段排序
+  numbers.sorted.foreach(println)
+  println()
+  //sortBy 元素按指定属性排序
+  numbers.sortBy((_._2)).foreach(println)
+  println()
+  //sortWith 元素按指定函数排序
+  numbers.sortWith((a, b) => {
+    a._1 > b._1
+  }).foreach(println)
+  println()
+  val numbers2 = List((5, 6), (4, 3))
+  numbers.zipWithIndex.foreach(a => {
+    println(a._1+" "+a._2)
+  })
 }

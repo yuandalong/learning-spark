@@ -26,5 +26,9 @@ object ArrayDemo {
 
     val intArray = Array(1, 2, 3, 4, 5)
     forYield(intArray).foreach(print) //过滤后的结果
+
+    //定义对象时直接初始化
+    val a = Array[String]("a","b")
+    a.foreach(println)
   }
 }
