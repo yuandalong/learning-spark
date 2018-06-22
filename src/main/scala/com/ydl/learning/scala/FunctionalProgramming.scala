@@ -96,7 +96,7 @@ object FunctionalProgramming {
       * @return
       */
     def test2(a: (String, String) => String): String = {
-      return a("1", "2")
+      a("1", "2")
     }
 
     test2((a: String, b: String) => a + b)

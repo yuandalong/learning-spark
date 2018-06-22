@@ -1,7 +1,7 @@
-concurrency 多线程并发相关
-
-curried 柯力化
-
-ParamLeanthNotSure 参数可以变
-
-Partial 部分应用
+- ByNameParam By-Name参数,By-Name的参数，如果传入的参数值是一个方法，则此方法是懒加载的，只有在调用时才执行
+- concurrency包 多线程并发相关
+- Curried 柯力化
+- MethodAndFunDiff Method方法和Function函数的区别
+- ParamLeanthNotSure 参数可以变
+- Partial 部分应用
+- QueueDemo 队列操作

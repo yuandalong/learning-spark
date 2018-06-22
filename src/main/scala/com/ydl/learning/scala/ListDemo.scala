@@ -28,7 +28,7 @@ object ListDemo extends App {
   var fruit3 = List[String]()
   fruit3 = fruit3 :+ "a"
   //根据索引获取元素
-  println(fruit3(0))
+  println(fruit3.head)
 
   //合并两个list
   val fruit4 = fruit3 ++ fruit2
@@ -42,12 +42,12 @@ object ListDemo extends App {
   //正序循环
   fruit2.foreach(println)
   //倒序循环
-  for (i <- (0 until fruit2.length).reverse) {
+  for (i <- fruit2.indices.reverse) {
     println("===" + fruit2(i))
   }
   //break使用
   breakable(
-    for (i <- 0 until fruit2.length) {
+    for (i <- fruit2.indices) {
       if (i == 1) {
         break
       }
@@ -71,7 +71,7 @@ object ListDemo extends App {
   numbers.sorted.foreach(println)
   println()
   //sortBy 元素按指定属性排序
-  numbers.sortBy((_._2)).foreach(println)
+  numbers.sortBy(_._2).foreach(println)
   println()
   //sortWith 元素按指定函数排序
   numbers.sortWith((a, b) => {
