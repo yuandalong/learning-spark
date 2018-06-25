@@ -1,6 +1,6 @@
 package com.ydl.learning.scala.concurrency
 
-import java.util.concurrent.{Callable, Executor, FutureTask}
+import java.util.concurrent.{Callable, FutureTask}
 
 /**
   * FuturesDemo

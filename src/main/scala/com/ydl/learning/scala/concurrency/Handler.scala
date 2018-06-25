@@ -9,7 +9,7 @@ import java.net.Socket
   */
 class Handler(socket: Socket) extends Runnable {
   //当前线程名称
-  def message = (Thread.currentThread.getName() + "\n")
+  def message = Thread.currentThread.getName() + "\n"
 
   def run() {
     println(message)

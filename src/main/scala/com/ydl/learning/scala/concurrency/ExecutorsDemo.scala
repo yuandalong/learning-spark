@@ -29,7 +29,7 @@ object ExecutorsDemo {
   def main(args: Array[String]): Unit = {
     //获取cpu核心数
     println(Runtime.getRuntime().availableProcessors())
-    (new ExecutorsDemo(2020, 16)).run()
+    new ExecutorsDemo(2020, 16).run()
   }
 }
 
