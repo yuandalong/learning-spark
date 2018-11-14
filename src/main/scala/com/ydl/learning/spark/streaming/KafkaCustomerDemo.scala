@@ -67,7 +67,7 @@ object KafkaCustomerDemo {
     Create a dummy process that simply returns the message as is.
      */
     def processMessage(message: ConsumerRecord[String, String]): ConsumerRecord[String, String] = {
-//      println(message.value())
+      //      println(message.value())
       message
     }
 
@@ -106,6 +106,7 @@ object KafkaCustomerDemo {
       */
     def getOffsets(partitionList: List[PartitionInfo], hbaseTable: Table, kafkaGroupId: String,
                    beginOffsetMap: mutable.Map[TopicPartition, Long]) = {
+      println("starting getOffsets")
       //起始offset map
       val fromOffsets = collection.mutable.Map[TopicPartition, Long]()
       partitionList.groupBy(_.topic).foreach(topicGroup => {
@@ -165,7 +166,7 @@ object KafkaCustomerDemo {
       println(s"数据条数:${newRDD.count()}")
       val offsetRanges = rdd.asInstanceOf[HasOffsetRanges].offsetRanges
       offsetRanges.foreach(offset => {
-        println(offset.topic, offset.partition, offset.fromOffset, offset.untilOffset)
+        println("kafka消费信息：", offset.topic, offset.partition, offset.fromOffset, offset.untilOffset)
         if (offset.fromOffset == offset.untilOffset) {
           println(s"${offset.topic}:${offset.partition} no new data")
         }
