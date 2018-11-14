@@ -23,7 +23,7 @@ object MapDemo extends App {
 
   //遍历操作2
   studentInfoMutable.foreach(e => {
-    val (k, v) = e;
+    val (k, v) = e
     println(k + ":" + v)
   }
   )
@@ -70,7 +70,7 @@ object MapDemo extends App {
   println(show(xMap.get("spark")))
   println(show(xMap.get("sparkSQL")))
   //map取值,如果可以不存在会报错java.util.NoSuchElementException: None.get
-  println(xMap.get("spark").get)
+  println(xMap("spark"))
   //所有用get的正确方式是先进行isDefined判断
   if (xMap.get("spark2").isDefined) {
     println(xMap.get("spark2"))
@@ -78,7 +78,7 @@ object MapDemo extends App {
     println("is not defined")
   }
   //建议使用getOrElse方法设置默认值来替换isDefinde和get方法的组合
-  println(xMap.get("spark").getOrElse("is not defined"))
+  println(xMap.getOrElse("spark", "is not defined"))
   //getOrElse返回的数据类型是any，需要用asInstanceOf强制装换
   val a = xMap.getOrElse("s", "").asInstanceOf[String]
 }
