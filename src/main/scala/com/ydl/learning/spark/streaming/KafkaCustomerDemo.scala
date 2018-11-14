@@ -29,7 +29,8 @@ object KafkaCustomerDemo {
 
     val batchDuration = 10
     val bootstrapServers = "192.168.49.62:9092"
-    val topicRegexp = "test"
+    val topicRegexp = "(trans_water_\\d{2})|(membership)|(coupon)|(ado_pos_wait_\\d{2})|(ado_bill_\\d{2})"
+    //    val topicRegexp = "test"
 
     val consumerGroupID = "ydl"
     val hbaseTableName = "stream_kafka_offsets"
@@ -72,20 +73,19 @@ object KafkaCustomerDemo {
     /**
       * 保存kafka offset，每个分区一列
       *
-      * @param TOPIC_NAME
-      * @param GROUP_ID
-      * @param offsetRanges
+      * @param topicName
+      * @param groupId
+      * @param partition
+      * @param untilOffset
       * @param table
       * @param batchTime
       */
-    def saveOffsets(TOPIC_NAME: String, GROUP_ID: String, offsetRanges: Array[OffsetRange], table: Table,
+    def saveOffsets(topicName: String, groupId: String, partition: Int, untilOffset: Long, table: Table,
                     batchTime: org.apache.spark.streaming.Time): Unit = {
-      val rowKey = TOPIC_NAME + ":" + GROUP_ID + ":" + String.valueOf(batchTime.milliseconds)
+      val rowKey = topicName + ":" + groupId + ":" + String.valueOf(batchTime.milliseconds)
       HbaseUtils.hbaseSaveHelper(rowKey, table, put => {
-        for (offset <- offsetRanges) {
-          put.addColumn(Bytes.toBytes("cf"), Bytes.toBytes(offset.partition.toString),
-            Bytes.toBytes(offset.untilOffset.toString))
-        }
+        put.addColumn(Bytes.toBytes("cf"), Bytes.toBytes(partition.toString),
+          Bytes.toBytes(untilOffset.toString))
       })
     }
 
@@ -161,17 +161,20 @@ object KafkaCustomerDemo {
     */
     inputDStream.foreachRDD((rdd, batchTime) => {
       val newRDD = rdd.map(message => processMessage(message))
-      println(s"数据条数:${newRDD.count()}")
-      val offsetRanges = rdd.asInstanceOf[HasOffsetRanges].offsetRanges
-      offsetRanges.foreach(offset => {
-        println("kafka消费信息：", offset.topic, offset.partition, offset.fromOffset, offset.untilOffset)
-        if (offset.fromOffset == offset.untilOffset) {
-          println(s"${offset.topic}:${offset.partition} no new data")
-        }
-        else {
-          saveOffsets(offset.topic, consumerGroupID, offsetRanges, table, batchTime) //save the offsets to HBase
-        }
-      })
+      val count = newRDD.count()
+      println(s"数据条数:$count")
+      if(count > 0){
+        val offsetRanges = rdd.asInstanceOf[HasOffsetRanges].offsetRanges
+        offsetRanges.foreach(offset => {
+          println("kafka消费信息：", offset.topic, offset.partition, offset.fromOffset, offset.untilOffset)
+          if (offset.fromOffset == offset.untilOffset) {
+            println(s"${offset.topic}:${offset.partition} no new data")
+          }
+          else {
+            saveOffsets(offset.topic, consumerGroupID, offset.partition, offset.untilOffset, table, batchTime)
+          }
+        })
+      }
 
     })
     //
