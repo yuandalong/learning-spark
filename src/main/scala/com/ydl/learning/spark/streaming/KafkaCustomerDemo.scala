@@ -29,18 +29,16 @@ object KafkaCustomerDemo {
 
     val batchDuration = 10
     val bootstrapServers = "192.168.49.62:9092"
-    //    val topicRegexp = "(trans_water_\\d{2})|(membership)|(coupon)|(ado_pos_wait_\\d{2})|(ado_bill_\\d{2})"
     val topicRegexp = "test"
 
     val consumerGroupID = "ydl"
     val hbaseTableName = "stream_kafka_offsets"
     val hbaseConf = HBaseConfiguration.create()
-    hbaseConf.set("hbase.zookeeper.quorum", "hb-2ze26qdn066pgwc9i-001.hbase.rds.aliyuncs.com:2181,hb-2ze26qdn066pgwc9i-002.hbase.rds.aliyuncs.com:2181,hb-2ze26qdn066pgwc9i-003.hbase.rds.aliyuncs.com:2181")
+    hbaseConf.set("hbase.zookeeper.quorum", "localhost:2181")
     val connection = ConnectionFactory.createConnection(hbaseConf)
     val table: Table = connection.getTable(TableName.valueOf(hbaseTableName))
     val sparkConf = new SparkConf().setAppName("Kafka-Offset-Management-Blog")
       .setMaster("local[4]")
-    //Uncomment this line to test while developing on a workstation
     val sc = new SparkContext(sparkConf)
     val ssc = new StreamingContext(sc, Seconds(batchDuration.toLong))
 
@@ -177,7 +175,6 @@ object KafkaCustomerDemo {
 
     })
     //
-    println("Number of messages processed " + inputDStream.count())
     ssc.start()
     ssc.awaitTermination()
   }
