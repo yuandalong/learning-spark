@@ -14,8 +14,12 @@ object ThreadDemo {
     val hello = new Thread(new Runnable {
       override def run(): Unit = {
         println("hello world")
+        Thread.sleep(10000)
+        println("thread end")
       }
     })
     hello.start()
+    hello.join()
+    println("main end")
   }
 }
