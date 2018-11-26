@@ -15,6 +15,8 @@ object SetDemo extends App {
   //默认情况下，Set的实现方式是HashSet实现方式，
   //集中的元素通过HashCode值进行组织
   numsSet + 6
+  println(numsSet)
+  println(numsSet + 6)
   //res20: scala.collection.mutable.Set[Double] = Set(5.0, 6.0, 3.0)
 
   //遍历集
