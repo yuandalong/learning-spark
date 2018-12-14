@@ -35,7 +35,7 @@ object KafkaCustomerDemo {
     val consumerGroupID = "ydl"
     val hbaseTableName = "stream_kafka_offsets"
     val hbaseConf = HBaseConfiguration.create()
-    hbaseConf.set("hbase.zookeeper.quorum", "hb-2ze26qdn066pgwc9i-001.hbase.rds.aliyuncs.com:2181,hb-2ze26qdn066pgwc9i-002.hbase.rds.aliyuncs.com:2181,hb-2ze26qdn066pgwc9i-003.hbase.rds.aliyuncs.com:2181")
+    hbaseConf.set("hbase.zookeeper.quorum", "localhost:2181")
     val connection = ConnectionFactory.createConnection(hbaseConf)
     val table: Table = connection.getTable(TableName.valueOf(hbaseTableName))
     val sparkConf = new SparkConf().setAppName("Kafka-Offset-Management-Blog")

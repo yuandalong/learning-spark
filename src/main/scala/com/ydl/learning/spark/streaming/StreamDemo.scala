@@ -1,11 +1,8 @@
 package com.ydl.learning.spark.streaming
 
-import org.apache.spark.streaming.StreamingContext
-import org.apache.spark.streaming.Seconds
 import org.apache.spark.SparkConf
-import java.io.PrintWriter
-import java.io.File
 import org.apache.spark.examples.streaming.StreamingExamples
+import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 /**
   * spark stream demo
@@ -27,7 +24,7 @@ object StreamDemo { //scala 2.9以后的版本废弃了Application而是启用�
     // 连接到本地机器9999端口上后，使用收到的数据创建DStream 
     val lines = ssc.socketTextStream("127.0.0.1", 20102)
     lines.print()
-    println(lines.toString())
+    println(lines.toString)
     val words = lines.flatMap(_.split(" "))
     words.print()
     // 从DStream中筛选出包含字符串"error"的行
