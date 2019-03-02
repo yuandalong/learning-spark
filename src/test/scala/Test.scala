@@ -1,9 +1,9 @@
-
+import org.apache.commons.codec.digest.DigestUtils
 
 /**
   * Created by ydl on 2017/3/14.
   */
 object Test extends App {
-  val l:List[String] = null
-  print(l == null)
+  val md5 = DigestUtils.md5Hex("123")
+  println(md5)
 }

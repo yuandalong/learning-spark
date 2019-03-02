@@ -1,7 +1,8 @@
 package com.ydl.learning.spark.transformationsDemo
 
 /**
-  * aggregateByKey比较复杂，大概的意思是针对分区内部使用seqOp方法，针对最后的结果使用combOp方法。
+  * aggregateByKey算子，参数为(zeroValue: U)(seqOp: (U, V) => U, combOp: (U, U) => U)
+  * aggregateByKey与aggregate类似，区别是根据key进行分组合并，也是seqOp相当于map操作，comb相当于reduce
   * Created by ydl on 2017/3/27.
   */
 object AggregateByKeyDemo extends BaseSc with App {

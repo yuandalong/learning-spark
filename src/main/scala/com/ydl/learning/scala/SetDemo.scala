@@ -31,4 +31,24 @@ object SetDemo extends App {
 
   linkedHashSet + 6
   //res26: scala.collection.mutable.LinkedHashSet[Double] = Set(3.0, 5.0, 6.0)
+
+  //交集
+  // &方法等同于interset方法
+  Set(1, 2, 3) & Set(2, 4)
+  Set(1, 2, 3) intersect Set(2, 4)
+
+  //并集
+  Set(1, 2, 3) ++ Set(2, 4)
+  // |方法等同于union方法
+  Set(1, 2, 3) | Set(2, 4)
+  Set(1, 2, 3) union Set(2, 4)
+
+  //差集
+  //得到 Set(1,3)
+  Set(1, 2, 3) -- Set(2, 4)
+  Set(1, 2, 3) &~ Set(2, 4)
+  Set(1, 2, 3) diff Set(2, 4)
+
+  println(Set(1, 2, 3) & Set(2, 4))
+  println(Set(1, 2, 3) intersect Set(2, 4))
 }
