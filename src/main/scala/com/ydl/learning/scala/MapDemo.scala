@@ -1,5 +1,9 @@
 package com.ydl.learning.scala
 
+import java.util
+
+import com.alibaba.fastjson.JSONObject
+
 /**
   * Map demo
   * Map和Tuple的区别是Map是键值对的集合，元组则是不同类型值的聚集
@@ -81,4 +85,8 @@ object MapDemo extends App {
   println(xMap.getOrElse("spark", "is not defined"))
   //getOrElse返回的数据类型是any，需要用asInstanceOf强制装换
   val a = xMap.getOrElse("s", "").asInstanceOf[String]
+  var aaa = new util.HashMap[String, Any]()
+  aaa.put("a", 1)
+  aaa.put("b", "b")
+
 }

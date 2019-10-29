@@ -13,7 +13,7 @@ class ReadJsonAsSqlDemo {
 
 object ReadJsonAsSqlDemo {
 
-  //将sql转成样式类时，样式列必须定义为全局的，否则会编译失败
+  //将sql转成样式类时，样式类必须定义为全局的，否则会编译失败
   // Note: Case classes in Scala 2.10 can support only up to 22 fields. To work around this limit,
   // you can use custom classes that implement the Product interface
   case class Person(name: String, age: Long)

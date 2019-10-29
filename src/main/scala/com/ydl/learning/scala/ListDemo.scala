@@ -72,11 +72,14 @@ object ListDemo extends App {
   })
   println(result2)
   //排序
-  //sorted 元素按字段排序
+  //sorted 元素按字段排序，默认降序
+  numbers.sorted.foreach(println)
   numbers.sorted.foreach(println)
   println()
   //sortBy 元素按指定属性排序
   numbers.sortBy(_._2).foreach(println)
+  //通过柯立话函数指定排序规则
+  numbers.sortBy(_._2)(Ordering.Int.reverse).foreach(println)
   println()
   //sortWith 元素按指定函数排序
   numbers.sortWith((a, b) => {
@@ -87,4 +90,10 @@ object ListDemo extends App {
   numbers.zipWithIndex.foreach(a => {
     println(a._1 + " " + a._2)
   })
+
+  //取前几个元素
+  numbers.take(2)
+
+  //取最大
+  numbers.maxBy(_._2)
 }
