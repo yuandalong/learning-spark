@@ -18,13 +18,22 @@ object ReadJsonAsSqlDemo {
   // you can use custom classes that implement the Product interface
   case class Person(name: String, age: Long)
 
-  private val path = "src/main/resources/people_json.txt"
+  //注意path的值，如果项目里加了core-site或者hdfs-site等相关配置，写相对路径的话默认会走hdfs
+  //如果要走本地文件，要在path里写绝对路径且用file开头
+  //而且如果程序中读取的是本地文件，那么，要在所有的节点都有这个数据文件，只在master中有这个数据文件时执行程序时一直报找不到文件
+  private val path = "file:/Volumes/work/code/study/learning-spark/src/main/resources/people_json.txt"
 
   def main(args: Array[String]): Unit = {
     val sparkSession = SparkUtils.getSession("Spark SQL basic example", "local[2]")
     // For implicit conversions like converting RDDs to DataFrames
     import sparkSession.implicits._
-    val df = sparkSession.read.json(path)
+    //val df = sparkSession.read.json(path)
+    //和上面一行等效，format支持的格式包括json, parquet, jdbc, orc, libsvm, csv, text
+    val df = sparkSession.read.format("json").load(path)
+    //数据存储为hdfs格式的文件
+    //df.write.format("parquet").save("src/main/resources/people_parquet")
+    //数据分桶
+    //df.write.bucketBy(10,"colname")
     //top 20 rows
     df.show()
     //打印表结构

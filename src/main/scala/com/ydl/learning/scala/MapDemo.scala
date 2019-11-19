@@ -89,4 +89,11 @@ object MapDemo extends App {
   aaa.put("a", 1)
   aaa.put("b", "b")
 
+
+  //合并两个map
+  //当两个key相同时，表达式右边的value会覆盖左边的
+  val b = a + ("c"->1)
+  val c = a ++ b
+
+
 }

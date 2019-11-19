@@ -52,7 +52,7 @@ object HiveDemo {
     //设置数据
     val rdd = spark.sparkContext.parallelize(Array("3 26","4 27")).map(_.split(" "))
     //设置模式信息
-    val schema = StructType(List(StructField("id", IntegerType, true), StructField("num", LongType, true)))
+    val schema = StructType(List(StructField("id", IntegerType, nullable = true), StructField("num", LongType, nullable = true)))
     //创建Row对象，每个Row对象都是rowRDD中的一行
     val rowRDD = rdd.map(p => Row(p(0).toInt, p(1).toLong))
     //建立起Row对象和模式之间的对应关系，也就是把数据和模式对应起来
