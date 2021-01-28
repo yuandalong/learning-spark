@@ -31,6 +31,8 @@ object ListDemo extends App {
   val fruit2 = "ap" :: ("org" :: ("pes" :: Nil))
   //追加元素
   var fruit3 = List[String]()
+  //此时fruit3不变，需要重新赋值才行
+  fruit3 :+ "a"
   fruit3 = fruit3 :+ "a"
   //根据索引获取元素
   println(fruit3.head)

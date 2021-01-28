@@ -1,3 +1,4 @@
+- async 异步
 - ByNameParam By-Name参数,By-Name的参数，如果传入的参数值是一个方法，则此方法是懒加载的，只有在调用时才执行
 - concurrency包 多线程并发相关
 - Curried 柯力化

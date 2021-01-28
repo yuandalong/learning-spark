@@ -7,7 +7,7 @@ package com.ydl.learning.scala
 object SetDemo extends App {
   //定义一个集合
   //这里使用的是mutable
-  val numsSet = Set(3.0, 5)
+  var numsSet = Set(3.0, 5)
   //numsSet: scala.collection.mutable.Set[Double] = Set(5.0, 3.0)
 
   //向集中添加一个元素，同前一讲中的列表和数组不一样的是
@@ -16,6 +16,7 @@ object SetDemo extends App {
   //集中的元素通过HashCode值进行组织
   numsSet + 6
   println(numsSet)
+  numsSet = numsSet + 6
   println(numsSet + 6)
   //res20: scala.collection.mutable.Set[Double] = Set(5.0, 6.0, 3.0)
 

@@ -29,6 +29,7 @@ object BreakDemo {
         println(i)
       }
     }
+
     println("---------------------")
     val l = List(1, 2, 3, 4, 5, 6, 7, 8)
     var continue = true
@@ -43,7 +44,6 @@ object BreakDemo {
     })
     println("---------------------")
 
-
     continue = true
     l.toStream.takeWhile(_ => continue).foreach(i => {
       println(i)
@@ -51,5 +51,25 @@ object BreakDemo {
         continue = false
       }
     })
+
+    println("---------------------")
+
+    //for循环加守护标记
+    var flag = true
+    for(i <- 0 until 10 if flag){
+      println(i)
+      if(i > 5){
+        flag = false
+      }
+    }
+
+    println("---------------------")
+    breakable{
+      while (true){
+        println(1)
+        break
+      }
+    }
+
   }
 }
